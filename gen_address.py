@@ -1,11 +1,18 @@
 #!/user/bin/ven python
 # coding=utf-8
 
-content = ''
-addr = '"2cedcab10b06a5840f3d88508937abf097dc256e",'
-for x in range(500):
-    content += addr
-content = '[' + content + ']'
+address_count = 100
+address = 'TRu2DruRJDjVsqno7CwXMzJb7vQTpVaKmL'
+
+
+def gen_addresses(count, addr=address):
+    addr = '"' + addr + '",'
+    content = ''
+    for x in range(count):
+        content += addr
+    content = content[:-1]
+    return '[' + content + ']'
+
 
 with open('addresses.txt', 'w') as f:
-    f.write(content)
+    f.write(gen_addresses(address_count, address))
